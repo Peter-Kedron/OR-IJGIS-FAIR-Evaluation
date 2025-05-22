@@ -12,7 +12,7 @@ output: html_notebook
 # Load data, Read the CSV---------------------------------
 #
 
-data <- read.csv("C:/Users/zijun_li/Documents/IJGIS_Audit/Computational+Reproducibilty+Screener_May+22,+2025_12.05/Computational Reproducibilty Screener_May 22, 2025_12.05.csv")
+data <- read.csv("workingdirectory/Computational Reproducibilty Screener_May 22, 2025_12.05.csv")
 
 #
 # Remove unwanted columns by column names-----------------
@@ -24,7 +24,7 @@ data <- data[, !(names(data) %in% c("StartDate", "EndDate","Status","Finished","
 # Save new CSV as Cleaned Data-----------------------------
 #
 
-write.csv(data, "C:/Users/zijun_li/Documents/IJGIS_Audit/RawFromQuatrix_cleaned.csv", row.names = FALSE)
+write.csv(data, "workingdirectory/RawFromQuatrix_cleaned.csv", row.names = FALSE)
 
 #
 # Rename specific columns----------------------------------
@@ -82,7 +82,7 @@ names(data)[names(data) == "FDR.4.1."] <- "dr-r-1-1"
 # Save new CSV as Renamed Data-----------------------------
 #
 
-write.csv(data, "C:/Users/zijun_li/Documents/IJGIS_Audit/RawFromQuatrix_cleaned_Renamed.csv", row.names = FALSE)
+write.csv(data, "workingdirectory/RawFromQuatrix_cleaned_Renamed.csv", row.names = FALSE)
 
 #
 # Modify the cell------------------------------------------
@@ -100,7 +100,7 @@ data_clean <- data[!(is.na(data$id) | data$id == ""), ]
 # Save new CSV as modify id Data------------------------------------------
 #
 
-write.csv(data_clean, "C:/Users/zijun_li/Documents/IJGIS_Audit/RawFromQuatrix_cleaned_Renamed_modify_id.csv", row.names = FALSE)
+write.csv(data_clean, "workingdirectory/RawFromQuatrix_cleaned_Renamed_modify_id.csv", row.names = FALSE)
 
 
 
