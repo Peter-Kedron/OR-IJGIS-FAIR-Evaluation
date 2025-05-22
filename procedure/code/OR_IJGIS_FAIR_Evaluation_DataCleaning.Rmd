@@ -91,13 +91,13 @@ write.csv(data, "C:/Users/zijun_li/Documents/IJGIS_Audit/RawFromQuatrix_cleaned_
 data[34, "id"] <- 22
 
 #
-# Keep only rows where 'id' is not NA and not an empty string
+# Keep only rows where 'id' is not NA and not an empty string------------------------------------------
 #
 
 data_clean <- data[!(is.na(data$id) | data$id == ""), ]
 
 #
-# Save new CSV as modify id Data-----------------------------
+# Save new CSV as modify id Data------------------------------------------
 #
 
 write.csv(data_clean, "C:/Users/zijun_li/Documents/IJGIS_Audit/RawFromQuatrix_cleaned_Renamed_modify_id.csv", row.names = FALSE)
