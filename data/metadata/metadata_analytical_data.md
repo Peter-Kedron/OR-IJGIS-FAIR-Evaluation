@@ -37,7 +37,8 @@
 | cr-a-2 | Code Accessible Commenting | Code uses a consistent and readable commenting style | Y/N | NA | :--: | :--: | :--: |
 | cr-i-1 | Code Interoperable Pakages | Code identifies package dependencies | Y/N | NA | :--: | :--: | :--: |
 | cr-i-2 | Code Interoperable Versions | Code identifies package versions | Y/N | NA | :--: | :--: | :--: |
-| cr-i-3| Code Interoperable Container| Code and data packaged in a container (e.g., docker) | Y/N | NA | :--: | :--: | :--: |
+| cr-i-3 | Code Interoperable Infrastructure | Code specifies computing infrastructure | Y/N | NA | :--: | :--: | :--: |
+| cr-i-4| Code Interoperable Container| Code and data packaged in a container (e.g., docker) | Y/N | NA | :--: | :--: | :--: |
 | cr-r-1 | Code Reusable License | Code is released with a clear and accessible license | Y/N | NA | :--: | :--: | :--: |
 | cr-r-2 | Code Reusable Parameters | Code lists all parameters used in model/algorithm | Y/N | NA | :--: | :--: | :--: |
 | cr-r-3 | Code Reusable Seeds | seed setting methods are described | Y/N | NA | :--: | :--: | :--: |
@@ -46,7 +47,8 @@
 | dr-1-1 | Data URL| Provide the URLs used to access the data | text | NA | :--: | :--: | :--: |
 | dr-1-2 | Data Reasons | Reason was provided for not sharing the data | text | NA | :--: | :--: | :--: |
 | dr-1-2-1 | Data Reasons Comment | comments for dr-1-2 other option | text | NA | :--: | :--: | :--: |
-| dr-2 | Metadata URL | Provide the URLs where the metadata can be accessed | Y/N | NA | :--: | :--: | :--: |
+| dr-2 | Metadata Available | Metadata is provided for the data | Y/N | NA | :--: | :--: | :--: |
+| dr-2-1 | Metadata URL | Provide the URLs where the metadata can be accessed | Y/N | NA | :--: | :--: | :--: |
 | dr-f-1 | Data finable identifier | Data are assigned a globally unique and persistent identifier (e.g., DOI) | Y/N | NA | :--: | :--: | :--: |
 | dr-f-2 | Date finable index | Data is registered or indexed in a searchable resource | Y/N | NA | :--: | :--: | :--: |
 | dr-f-3 | Date finable metadata| Metadata clearly and explicitly include the identifier of the data it describes | Y/N | NA | :--: | :--: | :--: |
