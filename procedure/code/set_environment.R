@@ -29,9 +29,9 @@ set_environment <- function(code_dir, date = "2025-06-01"){
   rm(pkgs)
   
   # Load functions
-  functions <- c("clean_data")
-  for (func in file.path(code_dir, 
-                         sprintf("%s.R", 
+  functions <- c("clean_data", "describe_data")
+  for (func in file.path(here(code_dir), 
+                         sprintf("%s.R",
                                  functions)
                          )
       ){source(func)}
