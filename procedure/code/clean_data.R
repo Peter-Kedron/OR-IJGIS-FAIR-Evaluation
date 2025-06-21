@@ -19,7 +19,7 @@ clean_data <- function(source_dir){
 
   # Load data, Read the raw CSV output from qualtrics--------
   dat_qualtrics <- data.frame(read.csv(file.path(here(source_dir),
-                                                 sprintf("qualtircs_screener_2025_06_19.csv")
+                                                 sprintf("qualtrics_screener_2025_06_19.csv")
                                                  ),
                                        header = TRUE)
                             )
