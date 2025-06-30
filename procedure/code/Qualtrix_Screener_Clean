@@ -1,0 +1,178 @@
+#
+# Load data, Read the CSV---------------------------------
+#
+
+data <- read.csv("/qualtrics_screener_2025_06_19.csv")
+
+#
+# Remove unwanted columns by column names-----------------
+#
+
+data <- data[, !(names(data) %in% c("StartDate", "EndDate","Status","Finished","IPAddress","RecordedDate","RecipientFirstName","RecipientLastName","RecipientEmail","ExternalReference","LocationLatitude","LocationLongitude","DistributionChannel","UserLanguage","First","Last"))]
+
+#
+# Rename specific columns----------------------------------
+#
+
+names(data)[names(data) == "Progress"] <- "progress"
+names(data)[names(data) == "Duration..in.seconds."] <- "duration"
+names(data)[names(data) == "ResponseId"] <- "qualtrics_id"
+names(data)[names(data) == "ID"] <- "id"
+names(data)[names(data) == "DOI"] <- "doi"
+names(data)[names(data) == "Data.Filter."] <- "d_filter"
+names(data)[names(data) == "Synth.data."] <- "d_synth"
+names(data)[names(data) == "Code.Filter."] <- "c_filter"
+names(data)[names(data) == "Q30"] <- "comments"
+names(data)[names(data) == "SCR.1"] <- "cr-1"
+names(data)[names(data) == "SCR.1.1."] <- "cr-1-1"
+names(data)[names(data) == "SCR.1.2"] <- "cr-1-2"
+names(data)[names(data) == "SCR.3"] <- "cr-3"
+names(data)[names(data) == "SCR.3_5_TEXT"] <- "cr-3-text"
+names(data)[names(data) == "SCR.4"] <- "cr-4"
+names(data)[names(data) == "SCR.4_3_TEXT"] <- "cr-4-text"
+names(data)[names(data) == "DCR.1._1"] <- "cr-f-1"
+names(data)[names(data) == "DCR.1._2"] <- "cr-f-2"
+names(data)[names(data) == "DCR.1.1"] <- "cr-f-1-1"
+names(data)[names(data) == "DCR.2_1"] <- "cr-a-1"
+names(data)[names(data) == "DCR.2_2"] <- "cr-a-2"
+names(data)[names(data) == "DCR.3_1"] <- "cr-i-1"
+names(data)[names(data) == "DCR.3_2"] <- "cr-i-2"
+#Are the available code used in the publication Interoperable? - Publication or code specifies computing infrastructure used
+names(data)[names(data) == "DCR.3_3"] <- "cr-i-3"
+names(data)[names(data) == "DCR.3_4"] <- "cr-i-4"
+names(data)[names(data) == "DCR.4_1"] <- "cr-r-1"
+names(data)[names(data) == "DCR.4_2"] <- "cr-r-2"
+names(data)[names(data) == "DCR.4_3"] <- "cr-r-3"
+names(data)[names(data) == "DCR.4.1"] <- "cr-r-1-1"
+names(data)[names(data) == "SDR.1"] <- "dr-1"
+names(data)[names(data) == "SDR.1.1"] <- "dr-1-1"
+names(data)[names(data) == "SDR.1.2"] <- "dr-1-2"
+names(data)[names(data) == "SDR.1.2_5_TEXT"] <- "dr-1-2-1"
+#Is a metadata provided for the data?
+names(data)[names(data) == "SDR.2"] <- "dr-2"
+names(data)[names(data) == "SDR.2.1"] <- "dr-2-1"
+names(data)[names(data) == "FDR.1_1"] <- "dr-f-1"
+names(data)[names(data) == "FDR.1_2"] <- "dr-f-2"
+names(data)[names(data) == "FDR.1_3"] <- "dr-f-3"
+names(data)[names(data) == "FDR.1.1"] <- "dr-f-1-1"
+names(data)[names(data) == "FDR.2_1"] <- "dr-a-1"
+names(data)[names(data) == "FDR.2_2"] <- "dr-a-2"
+names(data)[names(data) == "FDR.3_1"] <- "dr-i-1"
+names(data)[names(data) == "FDR.3_2"] <- "dr-i-2"
+names(data)[names(data) == "FDR.4_1"] <- "dr-r-1"
+names(data)[names(data) == "FDR.4_2"] <- "dr-r-2"
+names(data)[names(data) == "FDR.4_3"] <- "dr-r-3"
+names(data)[names(data) == "FDR.4.1."] <- "dr-r-1-1"
+
+#
+# Modify the cell------------------------------------------
+#
+
+data[33,"id"] <- 22
+
+#
+# Keep only rows where 'id' is not NA and not an empty string
+#
+
+#In IJGIS content .xlsx, 2nd_review sheet, for column Review marked "X", use the IDs to remove records in Qualtrix screener. 
+data_clean <- data[!(is.na(data$id) | data$id == ""), ]
+
+# Remover duplicate IDs, Remove rows where id is in the list of unwanted IDs
+unwanted_ids <- c(122, 143, 162, 268, 335, 366, 378, 415)  # Add as many IDs as needed
+data_clean <- data_clean[!(data_clean$id %in% unwanted_ids), ]
+
+# For IDs greater than 1000, subtract 9000
+data_clean$id <- ifelse(as.numeric(data_clean$id) > 1000,
+                        as.numeric(data_clean$id) - 9000,
+                        as.numeric(data_clean$id))
+
+#
+# Write code for, in csv: if dr-2 = NO then check that all subsequent metadata questions (dr-2-1, dr-f-3, dr-a-1, dr-i-1, dr-i-2) should be coded as NA
+#
+
+# List of subsequent columns to check
+subsequent_metadata_cols <- c("dr-2-1", "dr-f-3", "dr-a-1", "dr-i-1", "dr-i-2")
+
+# Apply the condition
+data_clean <- data %>%
+  mutate(across(all_of(subsequent_metadata_cols), ~ ifelse(`dr-2` == "No", NA, .)))
+
+#Add a blank "pre-post" column to the csv, to store pre-policy and post-policy info.
+# Add a new column "pre-post" with NA values
+data_clean$`pre-post` <- NA  # Add a new column "pre-post" with NA values
+
+#Add one column for info of pre and post policy 
+# Load library for reading Excel files
+library(readxl)
+
+# Read the "pre-policy review" sheet from the Excel file
+review_data <- read_excel("/IJGIS_Content_2017_202409_update.xlsx", sheet = "pre_policy_review")
+
+# Filter IDs where "to review" is "complete"
+pre_policy_ids <- review_data$ID[review_data$`To_Review` == "Complete"]
+
+# Convert to numeric if needed
+#pre_policy_ids <- as.numeric(pre_policy_ids)
+
+# Update the "pre-post" column for matching IDs
+data_clean$`pre-post`[data_clean$id %in% pre_policy_ids] <- "pre-policy"
+
+# Assign "post-policy" to remaining NAs
+data_clean$`pre-post`[is.na(data_clean$`pre-post`)] <- "post-policy"
+
+
+review_data2 <- read_excel("/IJGIS_Content_2017_202409_update.xlsx", sheet = "IJGIS")
+
+#Write code to assign year after policy label based on issue/vol numbers. Range starts at 34(9)-35(8), 35(9)-36(8), ...
+# Make a copy of data_clean
+data_assign <- data_clean
+
+# Add a new column "year_after_policy" with NA values
+data_assign$year_after_policy <- NA
+
+# Filter IDs for year 1 (vol 34 issue 9–12, vol 35 issue 1–8)
+First_ids <- review_data2 %>%
+  filter((vol == 34 & issue >= 9 & issue <= 12) |
+           (vol == 35 & issue >= 1 & issue <= 8)) %>%
+  pull(ID)
+
+# Assign "1" to year_after_policy for matching IDs
+data_assign$year_after_policy[as.character(data_assign$id) %in% as.character(First_ids)] <- "1"
+
+# Filter IDs for year 2 (vol 35 issue 9–12, vol 36 issue 1–8)
+Second_ids <- review_data2 %>%
+  filter((vol == 35 & issue >= 9 & issue <= 12) |
+           (vol == 36 & issue >= 1 & issue <= 8)) %>%
+  pull(ID)
+
+# Assign "2" to year_after_policy for matching IDs
+data_assign$year_after_policy[data_assign$id %in% Second_ids] <- "2"
+
+# Filter IDs for year 3 (vol 36 issue 9–12, vol 37 issue 1–8)
+Third_ids <- review_data2 %>%
+  filter((vol == 36 & issue >= 9 & issue <= 12) |
+           (vol == 37 & issue >= 1 & issue <= 8)) %>%
+  pull(ID)
+
+# Assign "3" to year_after_policy for matching IDs
+data_assign$year_after_policy[data_assign$id %in% Third_ids] <- "3"
+
+# Filter IDs for year 4 (vol 37 issue 9–12, vol 38 issue 1–8)
+Forth_ids <- review_data2 %>%
+  filter((vol == 37 & issue >= 9 & issue <= 12) |
+           (vol == 38 & issue >= 1 & issue <= 8)) %>%
+  pull(ID)
+
+# Assign "4" to year_after_policy for matching IDs
+data_assign$year_after_policy[data_assign$id %in% Forth_ids] <- "4"
+
+# Filter IDs for year 5 (vol 38 issue 9–10)
+Fifth_ids <- review_data2 %>%
+  filter(vol == 38 & issue >= 9 & issue <= 10) %>%
+  pull(ID)
+
+# Assign "5" to year_after_policy for matching IDs
+data_assign$year_after_policy[data_assign$id %in% Fifth_ids] <- "5"
+
+# Write the updated data to a new CSV
+write.csv(data_assign, "/Qualtrix_Screener_Clean.csv", row.names = FALSE)
