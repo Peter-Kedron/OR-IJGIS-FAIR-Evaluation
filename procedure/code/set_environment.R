@@ -24,7 +24,7 @@ set_environment <- function(code_dir, date = "2025-06-01"){
   }
   
   # Load libraries with specific version by groundhog
-  pkgs <- c("here")
+  pkgs <- c("plyr", "dplyr", "readxl", "here")
   groundhog.library(pkgs, date)
   rm(pkgs)
   

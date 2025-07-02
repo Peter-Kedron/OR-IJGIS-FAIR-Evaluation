@@ -19,6 +19,7 @@ Backup of *.doc*
 *.xlt
 
 # Ignore common R files
+.Renviron
 .Rproj.user
 .Rhistory
 .RData

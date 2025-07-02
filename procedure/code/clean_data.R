@@ -15,17 +15,17 @@
 
 ## -----------------------------------------------------------------------------
 
-clean_data <- function(source_dir){
+clean_data <- function(source_dir, dest_dir){
 
-  # Load data, Read the raw CSV output from qualtrics--------
+  # Load data, Read the raw CSV output from qualtrics
   dat_qualtrics <- data.frame(read.csv(file.path(here(source_dir),
                                                  sprintf("qualtrics_screener_2025_06_19.csv")
                                                  ),
                                        header = TRUE)
                             )
 
-  # Remove unwanted columns by column names-----------------
-  data <- data_qualtrics[, !(names(data_qualtrics) %in% c("StartDate", 
+  # Remove unwanted columns by column names
+  data <- dat_qualtrics[, !(names(dat_qualtrics) %in% c("StartDate", 
                                                           "EndDate",
                                                           "Status",
                                                           "Finished",
@@ -96,14 +96,91 @@ clean_data <- function(source_dir){
   names(data)[names(data) == "FDR.4_3"] <- "dr-r-3"
   names(data)[names(data) == "FDR.4.1."] <- "dr-r-1-1"
 
-  # Modify the cell------------------------------------------
-  data[34, "id"] <- 22
+  # Keep only rows where 'id' is not NA and not an empty string
+  dat_clean <- data[!(is.na(data$ID) | data$ID == ""), ]
   
-  # Keep only rows where 'id' is not NA and not an empty string-----------------
-  dat_clean <- data[!(is.na(data$id) | data$id == ""), ]
+  # Replace row corrected during team review 
+  dat_clean <- subset(dat_clean, !(ID %in% c(122, 143, 162, 268, 335, 366, 378, 415)))
+  old_values <- c(9122, 9143, 9162, 9268, 9335, 9366, 9378, 9415)
+  new_values <- c(122, 143, 162, 268, 335, 366, 378, 415)
+  dat_clean$ID <- mapvalues(dat_clean$ID, from = old_values, to = new_values)
+  
+  # Apply metadata question correction identified during team review
+  subsequent_metadata_cols <- c("dr-2-1", "dr-f-3", "dr-a-1", "dr-i-1", "dr-i-2")
+  dat_clean <- dat_clean %>%
+    mutate(across(all_of(subsequent_metadata_cols),
+                  ~ ifelse(`dr-2` == "No", NA, .)))
+  
+  # Index papers as pre- or post-policy based on Vol & Issue -------------------
+  # Load review lists
+  review_data <- read_excel(file.path(here(), 
+                                      source_dir, 
+                                      "IJGIS_article_list.xlsx"), 
+                            sheet = "pre_policy_review")
+  
+  review_data2 <- read_excel(file.path(here(), 
+                                       source_dir, 
+                                       "IJGIS_article_list.xlsx"), 
+                             sheet = "IJGIS")
+  
+  # Filter IDs where "to review" is "complete"
+  pre_policy_ids <- review_data$ID[review_data$`To_Review` == "Complete"]
+  
+  # Assign the "pre- & post-" labels for matching IDs
+  dat_clean$`pre-post` <- NA
+  dat_clean$`pre-post`[dat_clean$ID %in% pre_policy_ids] <- "pre-policy"
+  dat_clean$`pre-post`[is.na(dat_clean$`pre-post`)] <- "post-policy"
+  
+  # Add year after column
+  dat_clean$year_after_policy <- NA
+  
+  # Filter IDs for year 1 (vol 34 issue 9–12, vol 35 issue 1–8)
+  First_ids <- review_data2 %>%
+    filter((vol == 34 & issue >= 9 & issue <= 12) |
+             (vol == 35 & issue >= 1 & issue <= 8)) %>%
+    pull(ID)
+  
+  # Assign "1" to year_after_policy for matching IDs
+  dat_clean$year_after_policy[as.character(dat_clean$ID) %in% as.character(First_ids)] <- "1"
+  
+  # Filter IDs for year 2 (vol 35 issue 9–12, vol 36 issue 1–8)
+  Second_ids <- review_data2 %>%
+    filter((vol == 35 & issue >= 9 & issue <= 12) |
+             (vol == 36 & issue >= 1 & issue <= 8)) %>%
+    pull(ID)
+  
+  # Assign "2" to year_after_policy for matching IDs
+  dat_clean$year_after_policy[dat_clean$ID %in% Second_ids] <- "2"
+  
+  # Filter IDs for year 3 (vol 36 issue 9–12, vol 37 issue 1–8)
+  Third_ids <- review_data2 %>%
+    filter((vol == 36 & issue >= 9 & issue <= 12) |
+             (vol == 37 & issue >= 1 & issue <= 8)) %>%
+    pull(ID)
+  
+  # Assign "3" to year_after_policy for matching IDs
+  dat_clean$year_after_policy[dat_clean$ID %in% Third_ids] <- "3"
+  
+  # Filter IDs for year 4 (vol 37 issue 9–12, vol 38 issue 1–8)
+  Forth_ids <- review_data2 %>%
+    filter((vol == 37 & issue >= 9 & issue <= 12) |
+             (vol == 38 & issue >= 1 & issue <= 8)) %>%
+    pull(ID)
+  
+  # Assign "4" to year_after_policy for matching IDs
+  dat_clean$year_after_policy[dat_clean$ID %in% Forth_ids] <- "4"
+  
+  # Filter IDs for year 5 (vol 38 issue 9–10)
+  Fifth_ids <- review_data2 %>%
+    filter(vol == 38 & issue >= 9 & issue <= 10) %>%
+    pull(ID)
+  
+  # Assign "5" to year_after_policy for matching IDs
+  dat_clean$year_after_policy[dat_clean$ID %in% Fifth_ids] <- "5"
+  
   
   # Save new CSV as modify id Data------------------------------------------
-  f_name <- file.path(dest_dir, "dat_analysis.csv")
+  f_name <- file.path(here(),dest_dir, "dat_analysis.csv")
   write.csv(dat_clean, f_name, row.names = FALSE)
   
   # Return data.frame for analysis
