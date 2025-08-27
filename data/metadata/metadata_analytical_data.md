@@ -51,7 +51,7 @@
 | dr-2-1 | Metadata URL | Provide the URLs where the metadata can be accessed | Y/N | NA | :--: | :--: | :--: | Medium |
 | dr-f-1 | Data findable identifier | Data are assigned a globally unique and persistent identifier (e.g., DOI) | Y/N | NA | :--: | :--: | :--: | High |
 | dr-f-2 | Date findable index | Data is registered or indexed in a searchable resource | Y/N | NA | :--: | :--: | :--: | Medium |
-| dr-f-3 | Date findable metadata| Metadata clearly and explicitly include the identifier of the data it describes | Y/N | NA | :--: | :--: | :--: | Medium |
+| dr-f-3 | Data findable metadata| Metadata clearly and explicitly include the identifier of the data it describes | Y/N | NA | :--: | :--: | :--: | Medium |
 | dr-f-1-1 | Data identifier | What is the persistent identifier of the data? | text | NA | :--: | :--: | :--: | Low |
 | dr-a-1| Data accessible retrievable | Data are retrievable by their identifier using a standardized communications protocol | Y/N | NA | :--: | :--: | :--: | Medium |
 | dr-a-2 | Data accessible metadata | Metadata are accessible even when the data are no longer available | Y/N | NA | :--: | :--: | :--: | Low |

@@ -11,8 +11,6 @@
 
 ## Outputs:
 ## Returns a data.frame of cleaned data and a .csv file named "dat_analysis_*".
-
-
 ## -----------------------------------------------------------------------------
 
 clean_data <- function(source_dir, dest_dir){
@@ -51,12 +49,12 @@ clean_data <- function(source_dir, dest_dir){
   names(data)[names(data) == "ResponseId"] <- "qualtrics_id"
   names(data)[names(data) == "ID."] <- "id"
   names(data)[names(data) == "DOI"] <- "doi"
-  names(data)[names(data) == "Data.Filter."] <- "d_filter"
-  names(data)[names(data) == "Synth.data."] <- "d_synth"
-  names(data)[names(data) == "Code.Filter."] <- "c_filter"
+  # names(data)[names(data) == "Data_Filter"] <- "d-filter"
+  # names(data)[names(data) == "Synth_Data"] <- "d-synth"
+  # names(data)[names(data) == "Code_Filter"] <- "c-filter"
   names(data)[names(data) == "Q30"] <- "comments"
   names(data)[names(data) == "SCR.1"] <- "cr-1"
-  names(data)[names(data) == "SCR.1.1."] <- "cr-1-1	"
+  names(data)[names(data) == "SCR.1.1"] <- "cr-1-1"
   names(data)[names(data) == "SCR.1.2"] <- "cr-1-2"
   names(data)[names(data) == "SCR.3"] <- "cr-3"
   names(data)[names(data) == "SCR.3_5_TEXT"] <- "cr-3-text"
@@ -94,7 +92,7 @@ clean_data <- function(source_dir, dest_dir){
   names(data)[names(data) == "FDR.4_1"] <- "dr-r-1"
   names(data)[names(data) == "FDR.4_2"] <- "dr-r-2"
   names(data)[names(data) == "FDR.4_3"] <- "dr-r-3"
-  names(data)[names(data) == "FDR.4.1."] <- "dr-r-1-1"
+  names(data)[names(data) == "FDR.4.1"] <- "dr-r-1-1"
 
   # Keep only rows where 'id' is not NA and not an empty string
   dat_clean <- data[!(is.na(data$ID) | data$ID == ""), ]

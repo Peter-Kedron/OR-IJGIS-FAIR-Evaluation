@@ -1,0 +1,135 @@
+"Variable","Response","Count","Percent_of_Valid","Percent_of_Total","N_Valid","N_Missing","Percent_Missing"
+"d_filter","No",2,2,2,100,0,0
+"d_filter","Yes",98,98,98,100,0,0
+"d_synth","No",7,7,7,100,0,0
+"d_synth","Yes",93,93,93,100,0,0
+"c_filter","No",3,3,3,100,0,0
+"c_filter","Yes",97,97,97,100,0,0
+"cr.1","No",3,3.1,3,97,3,3
+"cr.1","Partial, some code cannot be accessed",5,5.2,5,97,3,3
+"cr.1","Yes",89,91.8,89,97,3,3
+"cr.1","Missing/NA",3,NA,3,97,3,3
+"cr.1.1","Figshare",71,75.5,71,94,6,6
+"cr.1.1","Figshare and GitHub",1,1.1,1,94,6,6
+"cr.1.1","GitHub",10,10.6,10,94,6,6
+"cr.1.1","Gitlab",1,1.1,1,94,6,6
+"cr.1.1","Google drive",1,1.1,1,94,6,6
+"cr.1.1","Harvard Dataverse",1,1.1,1,94,6,6
+"cr.1.1","Open Science Framework",2,2.1,2,94,6,6
+"cr.1.1","Zenodo",7,7.4,7,94,6,6
+"cr.1.1","Missing/NA",6,NA,6,94,6,6
+"cr.4","No",5,5.4,5,92,8,8
+"cr.4","Unclear, specify why",54,58.7,54,92,8,8
+"cr.4","Yes",30,32.6,30,92,8,8
+"cr.4","Yes,Unclear, specify why",3,3.3,3,92,8,8
+"cr.4","Missing/NA",8,NA,8,92,8,8
+"cr.f.1","Unclear",1,1.1,1,94,6,6
+"cr.f.1","Yes",93,98.9,93,94,6,6
+"cr.f.1","Missing/NA",6,NA,6,94,6,6
+"cr.f.2","No",2,2.1,2,94,6,6
+"cr.f.2","Yes",92,97.9,92,94,6,6
+"cr.f.2","Missing/NA",6,NA,6,94,6,6
+"cr.a.1","No",1,1.1,1,94,6,6
+"cr.a.1","Unclear",1,1.1,1,94,6,6
+"cr.a.1","Yes",92,97.9,92,94,6,6
+"cr.a.1","Missing/NA",6,NA,6,94,6,6
+"cr.a.2","No",4,4.3,4,94,6,6
+"cr.a.2","Unclear",2,2.1,2,94,6,6
+"cr.a.2","Yes",88,93.6,88,94,6,6
+"cr.a.2","Missing/NA",6,NA,6,94,6,6
+"cr.i.1","No",3,3.3,3,92,8,8
+"cr.i.1","Unclear",3,3.3,3,92,8,8
+"cr.i.1","Yes",86,93.5,86,92,8,8
+"cr.i.1","Missing/NA",8,NA,8,92,8,8
+"cr.i.2","No",9,9.8,9,92,8,8
+"cr.i.2","Unclear",6,6.5,6,92,8,8
+"cr.i.2","Yes",77,83.7,77,92,8,8
+"cr.i.2","Missing/NA",8,NA,8,92,8,8
+"cr.i.3","No",21,22.3,21,94,6,6
+"cr.i.3","Unclear",19,20.2,19,94,6,6
+"cr.i.3","Yes",54,57.4,54,94,6,6
+"cr.i.3","Missing/NA",6,NA,6,94,6,6
+"cr.i.4","No",93,98.9,93,94,6,6
+"cr.i.4","Yes",1,1.1,1,94,6,6
+"cr.i.4","Missing/NA",6,NA,6,94,6,6
+"cr.r.1","No",52,55.3,52,94,6,6
+"cr.r.1","Unclear",25,26.6,25,94,6,6
+"cr.r.1","Yes",17,18.1,17,94,6,6
+"cr.r.1","Missing/NA",6,NA,6,94,6,6
+"cr.r.2","No",4,4.3,4,94,6,6
+"cr.r.2","Unclear",4,4.3,4,94,6,6
+"cr.r.2","Yes",86,91.5,86,94,6,6
+"cr.r.2","Missing/NA",6,NA,6,94,6,6
+"cr.r.3","No",25,26.6,25,94,6,6
+"cr.r.3","Unclear",56,59.6,56,94,6,6
+"cr.r.3","Yes",13,13.8,13,94,6,6
+"cr.r.3","Missing/NA",6,NA,6,94,6,6
+"cr.r.1.1","Apache 2.0",1,1,1,97,3,3
+"cr.r.1.1","CC BY 4.0",61,62.9,61,97,3,3
+"cr.r.1.1","CC0",3,3.1,3,97,3,3
+"cr.r.1.1","GNU General Public license v3.0",1,1,1,97,3,3
+"cr.r.1.1","GNU General Public License v3.0",3,3.1,3,97,3,3
+"cr.r.1.1","GPL 3.0+",2,2.1,2,97,3,3
+"cr.r.1.1","MIT",5,5.2,5,97,3,3
+"cr.r.1.1","MIT License",2,2.1,2,97,3,3
+"cr.r.1.1","Not Specified",19,19.6,19,97,3,3
+"cr.r.1.1","Missing/NA",3,NA,3,97,3,3
+"dr.1","No",3,3.1,3,98,2,2
+"dr.1","Partial, some data cannot be accessed",6,6.1,6,98,2,2
+"dr.1","Yes",89,90.8,89,98,2,2
+"dr.1","Missing/NA",2,NA,2,98,2,2
+"dr.1.2","Limited by data contract",2,22.2,2,9,91,91
+"dr.1.2","No reason was provided",2,22.2,2,9,91,91
+"dr.1.2","No reason was provided,Other, please specify",1,11.1,1,9,91,91
+"dr.1.2","Other, please specify",3,33.3,3,9,91,91
+"dr.1.2","Unethical due to privacy concerns",1,11.1,1,9,91,91
+"dr.1.2","Missing/NA",91,NA,91,9,91,91
+"dr.2","No",71,72.4,71,98,2,2
+"dr.2","Yes",27,27.6,27,98,2,2
+"dr.2","Missing/NA",2,NA,2,98,2,2
+"dr.f.1","No",2,2.1,2,95,5,5
+"dr.f.1","Unclear",2,2.1,2,95,5,5
+"dr.f.1","Yes",91,95.8,91,95,5,5
+"dr.f.1","Missing/NA",5,NA,5,95,5,5
+"dr.f.2","No",7,7.4,7,95,5,5
+"dr.f.2","Unclear",2,2.1,2,95,5,5
+"dr.f.2","Yes",86,90.5,86,95,5,5
+"dr.f.2","Missing/NA",5,NA,5,95,5,5
+"dr.f.3","No",8,29.6,8,27,73,73
+"dr.f.3","Unclear",1,3.7,1,27,73,73
+"dr.f.3","Yes",18,66.7,18,27,73,73
+"dr.f.3","Missing/NA",73,NA,73,27,73,73
+"dr.a.1","Unclear",1,3.7,1,27,73,73
+"dr.a.1","Yes",26,96.3,26,27,73,73
+"dr.a.1","Missing/NA",73,NA,73,27,73,73
+"dr.a.2","No",60,68.2,60,88,12,12
+"dr.a.2","Unclear",22,25,22,88,12,12
+"dr.a.2","Yes",6,6.8,6,88,12,12
+"dr.a.2","Missing/NA",12,NA,12,88,12,12
+"dr.i.1","No",3,11.1,3,27,73,73
+"dr.i.1","Yes",24,88.9,24,27,73,73
+"dr.i.1","Missing/NA",73,NA,73,27,73,73
+"dr.i.2","No",7,25.9,7,27,73,73
+"dr.i.2","Unclear",2,7.4,2,27,73,73
+"dr.i.2","Yes",18,66.7,18,27,73,73
+"dr.i.2","Missing/NA",73,NA,73,27,73,73
+"dr.r.1","No",62,65.3,62,95,5,5
+"dr.r.1","Unclear",20,21.1,20,95,5,5
+"dr.r.1","Yes",13,13.7,13,95,5,5
+"dr.r.1","Missing/NA",5,NA,5,95,5,5
+"dr.r.2","No",8,8.4,8,95,5,5
+"dr.r.2","Unclear",3,3.2,3,95,5,5
+"dr.r.2","Yes",84,88.4,84,95,5,5
+"dr.r.2","Missing/NA",5,NA,5,95,5,5
+"dr.r.3","No",81,85.3,81,95,5,5
+"dr.r.3","Unclear",6,6.3,6,95,5,5
+"dr.r.3","Yes",8,8.4,8,95,5,5
+"dr.r.3","Missing/NA",5,NA,5,95,5,5
+"pre.post","post-policy",100,100,100,100,0,0
+"year_after_policy","3",100,100,100,100,0,0
+"reproducibility_rating","0",11,11,11,100,0,0
+"reproducibility_rating","1",62,62,62,100,0,0
+"reproducibility_rating","2",4,4,4,100,0,0
+"reproducibility_rating","3",1,1,1,100,0,0
+"reproducibility_rating","4",21,21,21,100,0,0
+"reproducibility_rating","5",1,1,1,100,0,0
