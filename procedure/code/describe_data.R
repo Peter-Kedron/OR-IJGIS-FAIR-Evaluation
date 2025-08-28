@@ -18,8 +18,6 @@
 
 describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   
-  # Load data and select variables for analysis --------------------------------
-  
   # Load the analytical dataset
   dat <- read.csv(file.path(here(), source_dir, "dat_analysis.csv"), 
                   header = TRUE, stringsAsFactors = FALSE)
@@ -28,8 +26,21 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   
   cat("Creating five-star reproducibility ratings...\n")
   
-  # Initialize rating column
-  dat$reproducibility_rating <- 0
+  # Initialize rating column with NA
+  dat$reproducibility_rating <- NA
+  
+  # Identify articles that should be excluded from rating
+  # (those with d_filter == "No" AND c_filter == "No")
+  exclude_from_rating <- (!is.na(dat$d_filter) & dat$d_filter == "No") & 
+    (!is.na(dat$c_filter) & dat$c_filter == "No")
+  
+  # Report exclusions
+  n_excluded <- sum(exclude_from_rating, na.rm = TRUE)
+  cat("Excluding", n_excluded, "articles from rating (d_filter=No AND c_filter=No)\n")
+  cat("Rating", nrow(dat) - n_excluded, "articles\n")
+  
+  # Initialize rating to 0 for articles that should be rated
+  dat$reproducibility_rating[!exclude_from_rating] <- 0
   
   # Check if required variables exist (handle both hyphen and period formats)
   required_vars <- c("dr.1", "cr.1", "dr.2", "dr.f.1", "cr.a.2", "cr.i.1", 
@@ -63,8 +74,13 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   cr_i_3 <- get_var_value(dat, "cr.i.3", "cr-i-3")
   cr_i_4 <- get_var_value(dat, "cr.i.4", "cr-i-4")
   
-  # Apply rating system
+  # Apply rating system only to articles that should be rated
   for (i in 1:nrow(dat)) {
+    
+    # Skip if this article should be excluded from rating
+    if (exclude_from_rating[i]) {
+      next
+    }
     
     # One-star: dr-1 = YES AND cr-1 = YES
     if (!is.na(dr_1[i]) && !is.na(cr_1[i]) && 
@@ -99,32 +115,35 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   }
   
   # Save the rated dataset
-  write.csv(dat, file.path(here(source_dir), "dat_analysis_rated.csv"), row.names = FALSE)
+  write.csv(dat, file.path(here(), source_dir, "dat_analysis_rated.csv"), row.names = FALSE)
   
-  # Print rating distribution
+  # Print rating distribution (including NA values)
   rating_table <- table(dat$reproducibility_rating, useNA = "ifany")
   cat("\nReproducibility Rating Distribution:\n")
   for (rating in names(rating_table)) {
     count <- rating_table[rating]
     pct <- round((count / nrow(dat)) * 100, 1)
-    if (rating == "0") {
+    if (!is.na(rating) && rating == "0") {
       cat("0-star (No rating):", count, "(", pct, "%)\n")
+    } else if (is.na(rating) || rating == "<NA>") {
+      cat("NA (Excluded from rating):", count, "(", pct, "%)\n")
     } else {
       cat(rating, "-star:", count, "(", pct, "%)\n")
     }
   }
   cat("\n")
   
+  # Create functions to calculate summary statistics ---------------------------
   # Initialize results list
   results <- list()
   
-  # Set up variable exclusion lists (now including reproducibility_rating in analysis)
+  # Set up variable exclusion lists
   exclude_vars <- c("progress", "duration", "qualtrics_id", "ID", "doi", 
                     "comments", "cr.3", "cr.3.text", "cr.4.text", "cr.1.2", 
                     "cr.f.1.1", "dr.1.1", "dr.1.2.1", "dr.2.1", 
                     "dr.f.1.1", "dr.r.1.1")
   
-  # Get all variable names and apply exclusion (reproducibility_rating will be included)
+  # Get all variable names and apply exclusion
   all_vars <- names(dat)
   summary_vars <- all_vars[!all_vars %in% exclude_vars]
   
@@ -259,8 +278,8 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   overview_table_all <- create_overview_table(summary_table_all)
   
   # Save complete dataset tables
-  write.csv(summary_table_all, file.path(here(dest_dir_table), "summary_statistics_all.csv"), row.names = FALSE)
-  write.csv(overview_table_all, file.path(here(dest_dir_table), "variable_overview_all.csv"), row.names = FALSE)
+  write.csv(summary_table_all, file.path(here(), dest_dir_table, "summary_statistics_all.csv"), row.names = FALSE)
+  write.csv(overview_table_all, file.path(here(), dest_dir_table, "variable_overview_all.csv"), row.names = FALSE)
   
   results$summary_table_all <- summary_table_all
   results$overview_table_all <- overview_table_all
@@ -268,38 +287,46 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   # Create pre-policy analysis
   if ("pre.post" %in% names(dat)) {
     dat_pre <- dat[dat$pre.post == "pre-policy" & !is.na(dat$pre.post), ]
-    cat("Creating summary statistics for pre-policy period (n =", nrow(dat_pre), ")...\n")
+    # Filter out NA reproducibility ratings
+    dat_pre_filtered <- dat_pre[!is.na(dat_pre$reproducibility_rating), ]
     
-    if (nrow(dat_pre) > 0) {
-      summary_table_pre <- create_summary_stats(dat_pre, "pre")
+    cat("Creating summary statistics for pre-policy period (n =", nrow(dat_pre), 
+        ", filtered n =", nrow(dat_pre_filtered), ")...\n")
+    
+    if (nrow(dat_pre_filtered) > 0) {
+      summary_table_pre <- create_summary_stats(dat_pre_filtered, "pre")
       overview_table_pre <- create_overview_table(summary_table_pre)
       
       # Save pre-policy tables
-      write.csv(summary_table_pre, file.path(here(dest_dir_table), "summary_statistics_pre.csv"), row.names = FALSE)
-      write.csv(overview_table_pre, file.path(here(dest_dir_table), "variable_overview_pre.csv"), row.names = FALSE)
+      write.csv(summary_table_pre, file.path(here(), dest_dir_table, "summary_statistics_pre.csv"), row.names = FALSE)
+      write.csv(overview_table_pre, file.path(here(), dest_dir_table, "variable_overview_pre.csv"), row.names = FALSE)
       
       results$summary_table_pre <- summary_table_pre
       results$overview_table_pre <- overview_table_pre
     } else {
-      cat("Warning: No pre-policy data found.\n")
+      cat("Warning: No pre-policy data found after filtering.\n")
     }
     
     # Create post-policy analysis
     dat_post <- dat[dat$pre.post == "post-policy" & !is.na(dat$pre.post), ]
-    cat("Creating summary statistics for post-policy period (n =", nrow(dat_post), ")...\n")
+    # Filter out NA reproducibility ratings
+    dat_post_filtered <- dat_post[!is.na(dat_post$reproducibility_rating), ]
     
-    if (nrow(dat_post) > 0) {
-      summary_table_post <- create_summary_stats(dat_post, "post")
+    cat("Creating summary statistics for post-policy period (n =", nrow(dat_post), 
+        ", filtered n =", nrow(dat_post_filtered), ")...\n")
+    
+    if (nrow(dat_post_filtered) > 0) {
+      summary_table_post <- create_summary_stats(dat_post_filtered, "post")
       overview_table_post <- create_overview_table(summary_table_post)
       
       # Save post-policy tables
-      write.csv(summary_table_post, file.path(here(dest_dir_table), "summary_statistics_post.csv"), row.names = FALSE)
-      write.csv(overview_table_post, file.path(here(dest_dir_table), "variable_overview_post.csv"), row.names = FALSE)
+      write.csv(summary_table_post, file.path(here(), dest_dir_table, "summary_statistics_post.csv"), row.names = FALSE)
+      write.csv(overview_table_post, file.path(here(), dest_dir_table, "variable_overview_post.csv"), row.names = FALSE)
       
       results$summary_table_post <- summary_table_post
       results$overview_table_post <- overview_table_post
     } else {
-      cat("Warning: No post-policy data found.\n")
+      cat("Warning: No post-policy data found after filtering.\n")
     }
   } else {
     cat("Warning: pre.post variable not found in dataset.\n")
@@ -317,28 +344,31 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
     for (year in unique_years) {
       # Filter data for this year
       dat_year <- dat[dat$year_after_policy == year & !is.na(dat$year_after_policy) & dat$year_after_policy != "NA", ]
+      # Filter out NA reproducibility ratings
+      dat_year_filtered <- dat_year[!is.na(dat_year$reproducibility_rating), ]
       
-      cat("Creating summary statistics for year", year, "after policy (n =", nrow(dat_year), ")...\n")
+      cat("Creating summary statistics for year", year, "after policy (n =", nrow(dat_year), 
+          ", filtered n =", nrow(dat_year_filtered), ")...\n")
       
-      if (nrow(dat_year) > 0) {
+      if (nrow(dat_year_filtered) > 0) {
         # Create summary statistics
-        summary_table_year <- create_summary_stats(dat_year, paste0("year_", year))
+        summary_table_year <- create_summary_stats(dat_year_filtered, paste0("year_", year))
         overview_table_year <- create_overview_table(summary_table_year)
         
         # Save year-specific tables
         year_suffix <- paste0("_year", year)
         write.csv(summary_table_year, 
-                  file.path(here(dest_dir_table), paste0("summary_statistics", year_suffix, ".csv")), 
+                  file.path(here(), dest_dir_table, paste0("summary_statistics", year_suffix, ".csv")), 
                   row.names = FALSE)
         write.csv(overview_table_year, 
-                  file.path(here(dest_dir_table), paste0("variable_overview", year_suffix, ".csv")), 
+                  file.path(here(), dest_dir_table, paste0("variable_overview", year_suffix, ".csv")), 
                   row.names = FALSE)
         
         # Store in results
         results[[paste0("summary_table", year_suffix)]] <- summary_table_year
         results[[paste0("overview_table", year_suffix)]] <- overview_table_year
       } else {
-        cat("Warning: No data found for year", year, "after policy.\n")
+        cat("Warning: No data found for year", year, "after policy after filtering.\n")
       }
     }
     

@@ -20,6 +20,7 @@
 source("set_environment.r")
 source("clean_data.r")
 source("describe_data.r")
+source("create_table2.r")
 
 # Set up environment
 set_environment("procedure/code")
@@ -31,3 +32,7 @@ dat_analysis <- clean_data("data/raw/public", "data/derived/public")
 descriptive_results <- describe_data("data/derived/public", 
                                      "results/figures", 
                                      "results/tables")
+
+# Create reproducibility summary table
+reproducibility_summary <- create_table2("data/derived/public", 
+                                         "results/tables")

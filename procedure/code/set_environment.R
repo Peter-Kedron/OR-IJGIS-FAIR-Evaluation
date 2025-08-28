@@ -3,6 +3,7 @@
 ## Purpose of script: Setting up working environment before any functions
 ## Author: Peter Kedron
 ## Date Created: 2025-06-19
+## Last Updated: 2025-08-28
 
 ## Inputs:
 ## code_dir (character): The directory for all scripts.
@@ -29,10 +30,9 @@ set_environment <- function(code_dir, date = "2025-06-01"){
   rm(pkgs)
   
   # Load functions
-  functions <- c("clean_data", "describe_data")
-  for (func in file.path(here(code_dir), 
-                         sprintf("%s.R",
-                                 functions)
-                         )
-      ){source(func)}
+  functions <- c("clean_data", "describe_data", "create_table2")
+  for (func in file.path(here(), code_dir, 
+                         sprintf("%s.R", functions)
+  )
+  ){source(func)}
 }
