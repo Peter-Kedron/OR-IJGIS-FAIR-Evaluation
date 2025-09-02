@@ -3,7 +3,7 @@
 ## Purpose of script: Execute descriptive analysis of audit data
 ## Author: Peter Kedron
 ## Date Created: 2025-07-02
-## Last Updated: 2025-08-27
+## Last Updated: 2025-09-02
 
 ## Inputs:
 ## code_dir (character): The directory for all scripts.
@@ -43,11 +43,11 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   dat$reproducibility_rating[!exclude_from_rating] <- 0
   
   # Check if required variables exist (handle both hyphen and period formats)
-  required_vars <- c("dr.1", "cr.1", "dr.2", "dr.f.1", "cr.a.2", "cr.i.1", 
+  required_vars <- c("dr.1", "cr.1", "dr.2", "dr.f.1", "cr.a.2", "cr.i.1", "cr.i.2",
                      "cr.f.1", "dr.r.2", "dr.i.1", "cr.i.3", "cr.i.4")
   
   # Alternative names if hyphens are used in original data
-  alt_vars <- c("dr-1", "cr-1", "dr-2", "dr-f-1", "cr-a-2", "cr-i-1", 
+  alt_vars <- c("dr-1", "cr-1", "dr-2", "dr-f-1", "cr-a-2", "cr-i-1", "cr-i-2",
                 "cr-f-1", "dr-r-2", "dr-i-1", "cr-i-3", "cr-i-4")
   
   # Function to get variable value (handles both naming conventions)
@@ -68,6 +68,7 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
   dr_f_1 <- get_var_value(dat, "dr.f.1", "dr-f-1")
   cr_a_2 <- get_var_value(dat, "cr.a.2", "cr-a-2")
   cr_i_1 <- get_var_value(dat, "cr.i.1", "cr-i-1")
+  cr_i_2 <- get_var_value(dat, "cr.i.2", "cr-i-2")
   cr_f_1 <- get_var_value(dat, "cr.f.1", "cr-f-1")
   dr_r_2 <- get_var_value(dat, "dr.r.2", "dr-r-2")
   dr_i_1 <- get_var_value(dat, "dr.i.1", "dr-i-1")
@@ -91,10 +92,11 @@ describe_data <- function(source_dir, dest_dir_fig, dest_dir_table) {
       if (!is.na(dr_2[i]) && dr_2[i] == "Yes") {
         dat$reproducibility_rating[i] <- 2
         
-        # Three-star: Two-star + dr-f-1 = YES AND cr-a-2 = YES AND cr-i-1 = YES AND cr-f-1 = YES AND dr-r-2 = YES
+        # Three-star: Two-star + dr-f-1 = YES AND cr-a-2 = YES AND cr-i-1 = YES AND cr-i-2 = YES AND cr-f-1 = YES AND dr-r-2 = YES
         if (!is.na(dr_f_1[i]) && dr_f_1[i] == "Yes" &&
             !is.na(cr_a_2[i]) && cr_a_2[i] == "Yes" &&
             !is.na(cr_i_1[i]) && cr_i_1[i] == "Yes" &&
+            !is.na(cr_i_2[i]) && cr_i_2[i] == "Yes" &&
             !is.na(cr_f_1[i]) && cr_f_1[i] == "Yes" &&
             !is.na(dr_r_2[i]) && dr_r_2[i] == "Yes") {
           dat$reproducibility_rating[i] <- 3
