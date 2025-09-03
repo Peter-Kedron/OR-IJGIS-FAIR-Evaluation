@@ -22,6 +22,7 @@ source("clean_data.r")
 source("describe_data.r")
 source("compare_ratings.r")
 source("create_table2.r")
+source("create_figure1.r")
 
 # Set up environment
 set_environment("procedure/code")
@@ -36,6 +37,8 @@ descriptive_results <- describe_data("data/derived/public",
 
 period_comparison <- compare_ratings("data/derived/public", "results/tables")
 
-# Create reproducibility summary table
+# Create reproducibility summary tables and figures
 reproducibility_summary <- create_table2("data/derived/public", 
                                          "results/tables")
+
+figure1_plot <- create_figure1("results/tables", "results/figures")
