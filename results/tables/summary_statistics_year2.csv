@@ -57,11 +57,7 @@
 "cr.r.1.1","BSD 2Clause License",1,1.3,1.2,79,1,1.2
 "cr.r.1.1","CC BY 4.0",50,63.3,62.5,79,1,1.2
 "cr.r.1.1","CC0",4,5.1,5,79,1,1.2
-"cr.r.1.1","GNU Affero General Public license 3.0",1,1.3,1.2,79,1,1.2
-"cr.r.1.1","GNU GENERAL PUBLIC LICENSE",1,1.3,1.2,79,1,1.2
-"cr.r.1.1","GNU GPLv3",1,1.3,1.2,79,1,1.2
-"cr.r.1.1","GNU PUBLIC LICENSE",1,1.3,1.2,79,1,1.2
-"cr.r.1.1","GPL  ",1,1.3,1.2,79,1,1.2
+"cr.r.1.1","GNU General Public License v3.0",5,6.3,6.2,79,1,1.2
 "cr.r.1.1","MIT",5,6.3,6.2,79,1,1.2
 "cr.r.1.1","Not Specified",13,16.5,16.2,79,1,1.2
 "cr.r.1.1","Missing/NA",1,NA,1.2,79,1,1.2
@@ -115,6 +111,6 @@
 "year_after_policy","2",80,100,100,80,0,0
 "reproducibility_rating","0",15,18.8,18.8,80,0,0
 "reproducibility_rating","1",54,67.5,67.5,80,0,0
-"reproducibility_rating","2",1,1.2,1.2,80,0,0
+"reproducibility_rating","2",2,2.5,2.5,80,0,0
 "reproducibility_rating","3",2,2.5,2.5,80,0,0
-"reproducibility_rating","4",8,10,10,80,0,0
+"reproducibility_rating","4",7,8.8,8.8,80,0,0

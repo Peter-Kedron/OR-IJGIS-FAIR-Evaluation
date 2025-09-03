@@ -58,7 +58,7 @@
 "cr.r.1.1","CC By 4.0",1,2.6,2.5,38,2,5
 "cr.r.1.1","CC BY 4.0",26,68.4,65,38,2,5
 "cr.r.1.1","CC0",3,7.9,7.5,38,2,5
-"cr.r.1.1","GPL ",1,2.6,2.5,38,2,5
+"cr.r.1.1","GNU General Public License v3.0",1,2.6,2.5,38,2,5
 "cr.r.1.1","MIT",1,2.6,2.5,38,2,5
 "cr.r.1.1","Not Specified",6,15.8,15,38,2,5
 "cr.r.1.1","Missing/NA",2,NA,5,38,2,5
@@ -112,6 +112,5 @@
 "year_after_policy","1",40,100,100,40,0,0
 "reproducibility_rating","0",10,25,25,40,0,0
 "reproducibility_rating","1",20,50,50,40,0,0
-"reproducibility_rating","2",3,7.5,7.5,40,0,0
-"reproducibility_rating","3",1,2.5,2.5,40,0,0
-"reproducibility_rating","4",6,15,15,40,0,0
+"reproducibility_rating","2",5,12.5,12.5,40,0,0
+"reproducibility_rating","4",5,12.5,12.5,40,0,0

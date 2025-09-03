@@ -61,17 +61,12 @@
 "cr.r.3","Unclear",51,57.3,54.8,89,4,4.3
 "cr.r.3","Yes",24,27,25.8,89,4,4.3
 "cr.r.3","Missing/NA",4,NA,4.3,89,4,4.3
-"cr.r.1.1","Apache License",1,1.1,1.1,92,1,1.1
+"cr.r.1.1","Apache 2.0",1,1.1,1.1,92,1,1.1
 "cr.r.1.1","BSD 3 Clause ""NEW"" OR "" REVISED License",1,1.1,1.1,92,1,1.1
 "cr.r.1.1","CC BY 4.0",67,72.8,72,92,1,1.1
-"cr.r.1.1","CC0",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","CC0 1.0 Universal",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","GNU General Public License",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","GNU General Public License v3.0",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","GPL-3.0",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","GPL 3.0+",1,1.1,1.1,92,1,1.1
-"cr.r.1.1","MIT",5,5.4,5.4,92,1,1.1
-"cr.r.1.1","MIT License",1,1.1,1.1,92,1,1.1
+"cr.r.1.1","CC0",2,2.2,2.2,92,1,1.1
+"cr.r.1.1","GNU General Public License v3.0",4,4.3,4.3,92,1,1.1
+"cr.r.1.1","MIT",6,6.5,6.5,92,1,1.1
 "cr.r.1.1","Not Specified",10,10.9,10.8,92,1,1.1
 "cr.r.1.1","Not Specified ",1,1.1,1.1,92,1,1.1
 "cr.r.1.1","Missing/NA",1,NA,1.1,92,1,1.1
@@ -127,6 +122,6 @@
 "year_after_policy","4",93,100,100,93,0,0
 "reproducibility_rating","0",9,9.7,9.7,93,0,0
 "reproducibility_rating","1",12,12.9,12.9,93,0,0
-"reproducibility_rating","2",9,9.7,9.7,93,0,0
+"reproducibility_rating","2",19,20.4,20.4,93,0,0
 "reproducibility_rating","3",1,1.1,1.1,93,0,0
-"reproducibility_rating","4",62,66.7,66.7,93,0,0
+"reproducibility_rating","4",52,55.9,55.9,93,0,0

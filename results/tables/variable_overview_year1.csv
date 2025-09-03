@@ -31,5 +31,5 @@
 "dr.r.2",35,5,12.5,3,"Yes",60
 "dr.r.3",35,5,12.5,3,"No",57.1
 "pre.post",40,0,0,1,"post-policy",100
-"reproducibility_rating",40,0,0,5,"1",50
+"reproducibility_rating",40,0,0,4,"1",50
 "year_after_policy",40,0,0,1,"1",100

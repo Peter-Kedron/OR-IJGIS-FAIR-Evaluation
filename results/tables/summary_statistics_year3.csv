@@ -10,9 +10,8 @@
 "cr.1","Missing/NA",1,NA,1,97,1,1
 "cr.1.1","Figshare",71,75.5,72.4,94,4,4.1
 "cr.1.1","Figshare and GitHub",1,1.1,1,94,4,4.1
-"cr.1.1","GitHub",10,10.6,10.2,94,4,4.1
-"cr.1.1","Gitlab",1,1.1,1,94,4,4.1
-"cr.1.1","Google drive",1,1.1,1,94,4,4.1
+"cr.1.1","GitHub",11,11.7,11.2,94,4,4.1
+"cr.1.1","Google Drive",1,1.1,1,94,4,4.1
 "cr.1.1","Harvard Dataverse",1,1.1,1,94,4,4.1
 "cr.1.1","Open Science Framework",2,2.1,2,94,4,4.1
 "cr.1.1","Zenodo",7,7.4,7.1,94,4,4.1
@@ -66,11 +65,8 @@
 "cr.r.1.1","Apache 2.0",1,1,1,97,1,1
 "cr.r.1.1","CC BY 4.0",61,62.9,62.2,97,1,1
 "cr.r.1.1","CC0",3,3.1,3.1,97,1,1
-"cr.r.1.1","GNU General Public license v3.0",1,1,1,97,1,1
-"cr.r.1.1","GNU General Public License v3.0",3,3.1,3.1,97,1,1
-"cr.r.1.1","GPL 3.0+",2,2.1,2,97,1,1
-"cr.r.1.1","MIT",5,5.2,5.1,97,1,1
-"cr.r.1.1","MIT License",2,2.1,2,97,1,1
+"cr.r.1.1","GNU General Public License v3.0",6,6.2,6.1,97,1,1
+"cr.r.1.1","MIT",7,7.2,7.1,97,1,1
 "cr.r.1.1","Not Specified",19,19.6,19.4,97,1,1
 "cr.r.1.1","Missing/NA",1,NA,1,97,1,1
 "dr.1","No",3,3.1,3.1,98,0,0
@@ -126,7 +122,7 @@
 "year_after_policy","3",98,100,100,98,0,0
 "reproducibility_rating","0",9,9.2,9.2,98,0,0
 "reproducibility_rating","1",62,63.3,63.3,98,0,0
-"reproducibility_rating","2",4,4.1,4.1,98,0,0
+"reproducibility_rating","2",5,5.1,5.1,98,0,0
 "reproducibility_rating","3",1,1,1,98,0,0
-"reproducibility_rating","4",21,21.4,21.4,98,0,0
+"reproducibility_rating","4",20,20.4,20.4,98,0,0
 "reproducibility_rating","5",1,1,1,98,0,0
