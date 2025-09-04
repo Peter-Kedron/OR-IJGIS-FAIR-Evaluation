@@ -28,15 +28,14 @@ create_figure1 <- function(source_dir_table, dest_dir_fig) {
   # Prepare data for visualization -------------------------------------------
   
   # Define the variables in the specified order (top to bottom)
-  variables_order <- c("dr.1", "cr.1", "cr.r.1", "dr.r.1", "dr.2", "dr.f.1", 
+  variables_order <- c("dr.1", "cr.1", "cr.r.1", "dr.2", "dr.f.1", 
                        "cr.a.2", "cr.i.1", "cr.i.2", "cr.f.1", "dr.r.2", 
                        "dr.i.1", "cr.i.3", "cr.i.4")
   
   # Create display labels for the variables
   variable_labels <- c("dr.1" = "Data available",
                        "cr.1" = "Code available", 
-                       "cr.r.1" = "Code licensed",
-                       "dr.r.1" = "Data licensed",
+                       "cr.r.1" = "Data & code licensed",
                        "dr.2" = "Metadata available",
                        "dr.f.1" = "Data identifier",
                        "cr.a.2" = "Code commented", 
@@ -50,7 +49,7 @@ create_figure1 <- function(source_dir_table, dest_dir_fig) {
   )
   
   # Define FAIR labels for each variable (in the specified order)
-  fair_labels <- c("F, A", "F, A", "R", "R", "I, R", 
+  fair_labels <- c("F, A", "F, A", "R", "I, R", 
                    "F, A", 
                    "A, R", 
                    "I", 
