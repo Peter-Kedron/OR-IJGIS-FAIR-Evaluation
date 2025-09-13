@@ -1,51 +1,42 @@
-If you use this template for research, please [cite it](template_reference.bib):
-> Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
-
-# Title of Study
+# Evaluating the Impact of Open Data + FAIR Policies on Computational Reproducibility: A Systematic Analysis of IJGIS Publications
 
 ## Contributors
 
-- First Name Last Name\*, email address, @githubname, ORCID link, affiliated institution(s)
-- First Name Last Name, email address, @githubname, ORCID link, affiliated institution(s)
+- Peter Kedron\*, peterkedron@ucsb.edu, @Peter-Kedron, [0000-0002-1093-3416](https://orcid.org/0000-0002-1093-3416), University of California Santa Barbara
+- Zijun Li, zijun_li@ucsb.edu, @ZijunLi07, University of California Santa Barbara
+- Lingbo Liu, lingboliu@fas.harvard.edu, , [0000-0002-9876-8506](https://orcid.org/0000-0002-9876-8506), Harvard University
 
 \* Corresponding author and creator
 
 ## Abstract
 
-Write a brief abstract about your research project.
-If the project is a reproduction or replication study, include the full citation with a statement
-This study is a *reproduction/replication* of:
-
-> citation to prior study
-
-A graphical abstract of the study could also be included as an image here.
+Academic journals increasingly require data and code sharing to improve computational reproducibility, but the effectiveness of these policies remains unclear. This study evaluates the impact of the Open Data + FAIR policy implemented by the International Journal of Geographic Information Science (IJGIS) in August 2019 through a systematic audit of 351 articles published between 2020-2024, compared against 32 articles from the pre-policy period. Using a five-star reproducibility framework based on FAIR principles, we assessed data and code availability, metadata quality, and adherence to open science standards. Results show significant improvement in material availability post-policy, with most articles now including data and code compared to minimal sharing pre-policy. However, computational reproducibility remained limited, with most articles achieving only 1-2 star ratings due to inadequate metadata, unclear workflow documentation, and missing computational environment details. While the policy successfully increased compliance with basic sharing requirements, it failed to facilitate the comprehensive documentation necessary for independent reproduction. These findings suggest that journal policies focused solely on availability are insufficient for achieving computational reproducibility in geographic research, highlighting the need for enhanced standards addressing metadata, workflow documentation, and computational environments.
 
 ## Study Metadata
 
-- `Key words`: Comma-separated list of keywords (tags) for searchability. Geographers often use one or two keywords each for: theory, geographic context, and methods.
-- `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
-- `Date created`: date when project was started
-- `Date modified`: date of most recent revision
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
-- `Funding Name`: name of funding for the project
-- `Funding Title`: title of project grant
-- `Award info URI`: web address for award information
-- `Award number`: award number
+- `Key words`: Reproducibility, Jornal Policies
+- `Subject`: Geographic Information Science
+- `Date created`: May 19, 2025
+- `Date modified`: Sept 13, 2025
+- `Spatial Coverage`: NA
+- `Spatial Resolution`: NA
+- `Spatial Reference System`: NA
+- `Temporal Coverage`: 2017-2024
+- `Temporal Resolution`: Monthly issues of IJGIS
+- `Funding Name`: NA
+- `Funding Title`: NA
+- `Award info URI`: NA
+- `Award number`: NA
 
 ## Related to
 
-- `OSF Project`:
+- `OSF Project`: [https://osf.io/g5hnm/](https://osf.io/g5hnm/)
 - `Pre-analysis Registration`:
 - `Post-analysis Report Registration`:
 - `Preprint`:
-- `Conference Presentation`:
+- `Conference Presentation`: AAG Annual Meeting 2025
 - `Publication`:
-- `Prior Study`:
-- `...`:
+- `Prior Study`: NA
 
 ## Metadata for access
 
@@ -63,11 +54,6 @@ This research compendium is structured with four main directories:
 - `procedure`: contains subdirectories for `code` or software scripts, information about the computational `environment` in which the research was conducted, and non-code research `protocols`
 - `results`: contains subdirectories for `figures`, formatted data `tables`, or `other` formats of research results.
 
-The data, procedures, and results of this repository are outlined in three tables:
-- Data: [data/data_index.csv](data/data_index.csv)
-- Procedures: [procedure/procedure_index.csv](procedure/procedure_index.csv)
-- Results: [results/results_index.csv](results/results_index.csv)
-
 Important local **documents** include:
 - Pre-analysis plan: [docs/report/preanalysis.pdf](docs/report/preanalysis.pdf)
 - Study report: [docs/report/report.pdf](docs/report/report.pdf)
@@ -76,7 +62,4 @@ Important local **documents** include:
 
 #### Compendium reference
 
-The [template_readme.md](template_readme.md) file contains more information on the design of this template and references used in the design.
-The [Template_LICENSE](Template_LICENSE) file provides the BSD 3-Clause license for using this template.
-To cite the template, please use [template_reference.bib](template_reference.bib) or:
 > Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
