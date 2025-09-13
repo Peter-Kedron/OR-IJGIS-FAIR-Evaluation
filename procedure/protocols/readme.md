@@ -1,3 +1,2 @@
 # Protocols
-Store any non-computational protocols and research procedures here.
-Document an index of files stored here in [procedures_index.csv](../procedure_index.csv) the root [procedure](../) folder.
+The qualtrics survey instrument used to review individual articles is stored here. This instrument was used to produce the raw file "qualtrics_screener_2025_09_02".
