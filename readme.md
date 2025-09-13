@@ -14,7 +14,7 @@ Academic journals increasingly require data and code sharing to improve computat
 
 ## Study Metadata
 
-- 'DOI': [10.17605/OSF.IO/G5HNM](https://doi.org/10.17605/OSF.IO/G5HNM)
+- `DOI`: [10.17605/OSF.IO/G5HNM](https://doi.org/10.17605/OSF.IO/G5HNM)
 - `Key words`: Reproducibility, Jornal Policies
 - `Subject`: Geographic Information Science
 - `Date created`: May 19, 2025
