@@ -1,1 +1,5 @@
 path,name,metadata,description
+\raw\public,IJGIS_article_list.xlsx,NA,List of IJGIS articles scrapped from journal website
+\raw\public,qualtrics_screener_2025_09_02.csv,metadata_analytical_data.md,Data from review of IJGIS Articles
+\derived\public,dat_analysis.csv,metadata_analytical_data.md,Data from review of IJGIS Articles after cleaning script is applied
+\derived\public,dat_analysis.csv,metadata_analytical_data.md,Data from review of IJGIS Articles after rating script is applied
