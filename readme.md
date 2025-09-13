@@ -56,7 +56,7 @@ This research compendium is structured with four main directories:
 - `results`: contains subdirectories for `figures`, formatted data `tables`, or `other` formats of research results.
 
 Important local **documents** include:
-- Pre-analysis plan: [docs/report/preanalysis.pdf](docs/report/IJGIS Reproducibility Check PAP.docx)
+- Pre-analysis plan: [docs/report/preanalysis.pdf](docs/report/IJGIS_Reproducibility_Check_PAP.docx)
 
 #### Compendium reference
 
