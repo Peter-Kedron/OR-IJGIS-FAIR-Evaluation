@@ -1,9 +1,12 @@
 # Results
 
-Store final research outputs, e.g. figures, tables, or other media for publications and presentations.
+Primary outputs of the analysis are indexed below.
 
-Complete the [results_metadata.csv](results_metadata.csv) file indexing each results file, including the fields:
-
-- `path`: the path from results folder, e.g., `figures`, `other`, or `tables`
-- `name`: the file name
-- `description`: very brief description or figure title
+path | name | description |
+-- | -- | -- |
+tables | summary_statistics_all... | summary stats |
+tables | summary_statistics_prep_year... | series of summary stats by year |
+tables | reproducibility_comparison_stats | comparison of rated articles |
+tables | reproducibility_improvement_metrics | measures of change in reproducibility |
+tables | reproducibility_summary_table | comparison of ratings |
+figure | figure1_reproducibility_practices | figure summarizing practice findings |
