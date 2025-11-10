@@ -1,5 +1,5 @@
 "Comparison","Wilcox_Statistic","P_Value","Effect_Size","Mean_Difference"
-"Year 1 vs Year 2",1552.5,0.7634,0.03,-0.1
-"Year 2 vs Year 3",4703.5,0.0069,-0.2,0.483
-"Year 3 vs Year 4",6517.5,0,-0.43,1.174
-"Year 4 vs Year 5",880,0,0.502,-1.385
+"Year 1 vs Year 2",1537.5,0.6928,0.039,-0.113
+"Year 2 vs Year 3",4700,0.0077,-0.199,0.475
+"Year 3 vs Year 4",6411,0,-0.407,1.097
+"Year 4 vs Year 5",941,0,0.467,-1.289
