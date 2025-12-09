@@ -3,7 +3,7 @@
 ## Purpose of script: Create horizontal bar chart of reproducibility criteria compliance
 ## Author: Peter Kedron
 ## Date Created: 2025-09-03
-## Last Updated: ---
+## Last Updated: 2025-12-06
 
 ## Inputs:
 ## source_dir_table (character): The directory containing summary statistics files
@@ -195,7 +195,7 @@ create_figure1 <- function(source_dir_table, dest_dir_fig) {
   
   # Save the figure ----------------------------------------------------------
   
-  output_file <- file.path(here(), dest_dir_fig, "figure1_reproducibility_practices.png")
+  output_file <- file.path(here(), dest_dir_fig, "figure1_reproducibility_practices.tiff")
   
   ggsave(
     filename = output_file,
@@ -203,7 +203,8 @@ create_figure1 <- function(source_dir_table, dest_dir_fig) {
     width = 6.5, 
     height = 5, 
     dpi = 300,
-    bg = "white"
+    bg = "white",
+    compression = "lzw"
   )
   
   cat("Figure saved successfully!\n")

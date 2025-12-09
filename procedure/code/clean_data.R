@@ -102,9 +102,8 @@ clean_data <- function(source_dir, dest_dir){
   
   # Identify Joint Review records based on ID pattern
   # Joint Review IDs are 9000+ higher than original IDs (e.g., 9122 corresponds to ID 122, 9089 to 89)
-  # This means Joint Review IDs start with 9 and are >= 9000
-  
-  # Find all IDs that are >= 9000 (these are Joint Review records)
+
+  # Find all IDs that are >= 9000
   joint_ids <- dat_clean$id[dat_clean$id >= 9000]
   
   # Calculate corresponding original IDs by subtracting 9000
@@ -118,7 +117,7 @@ clean_data <- function(source_dir, dest_dir){
   
   cat("\nFound", nrow(id_pairs), "records with duplicate ratings for inter-rater reliability\n")
   
-  # Define rating columns to analyze (code and data reproducibility questions)
+  # Define rating columns to analyze
   rating_cols <- c("cr-1", "cr-1-1", "cr-1-2", "cr-3", "cr-4",
                    "cr-f-1", "cr-f-2", "cr-f-1-1", 
                    "cr-a-1", "cr-a-2",
