@@ -55,9 +55,6 @@ This research compendium is structured with four main directories:
 - `procedure`: contains subdirectories for `code` or software scripts, information about the computational `environment` in which the research was conducted, and non-code research `protocols`
 - `results`: contains subdirectories for `figures`, formatted data `tables`, or `other` formats of research results.
 
-Important local **documents** include:
-- Pre-analysis plan: [docs/report/IJGIS_Reproducibility_Check_PAP.docx](docs/report/IJGIS_Reproducibility_Check_PAP.docx)
-
 #### Compendium reference
 
 > Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
