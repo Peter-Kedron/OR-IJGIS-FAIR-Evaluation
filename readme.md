@@ -32,12 +32,10 @@ Academic journals increasingly require data and code sharing to improve computat
 ## Related to
 
 - `OSF Project`: [https://osf.io/g5hnm/](https://osf.io/g5hnm/)
-- `Pre-analysis Registration`:
-- `Post-analysis Report Registration`:
 - `Preprint`:
 - `Conference Presentation`: AAG Annual Meeting 2025
 - `Publication`:
-- `Prior Study`: NA
+- `Figshare`: [https://figshare.com/s/dd90bdc589a863706274]
 
 ## Metadata for access
 
